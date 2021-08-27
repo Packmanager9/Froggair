@@ -1487,32 +1487,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.scores.push(new Text(fly.body.x, fly.body.y, this.combo))
             flies.splice(t,1)
             if(this.body.radius < 30){
-                this.guidedis+= .33333*.3
-                this.body.radius+= .33333*.3
-                this.eye2.radius+= .33333*.03
-                this.eye1.radius+= .33333*.03
-                this.leg1.radius+= .33333*.15
-                this.leg2.radius+= .33333*.15
-                this.leg3.radius+= .33333*.15
-                this.leg4.radius+= .33333*.15
-                this.leg1x.radius+= .33333*.09
-                this.leg2x.radius+= .33333*.09
-                this.leg3x.radius+= .33333*.09
-                this.leg4x.radius+= .33333*.09
-                this.tongue.radius+= .33333*.09
+                this.guidedis+= .12345*.3
+                this.body.radius+= .12345*.3
+                this.eye2.radius+= .12345*.03
+                this.eye1.radius+= .12345*.03
+                this.leg1.radius+= .12345*.15
+                this.leg2.radius+= .12345*.15
+                this.leg3.radius+= .12345*.15
+                this.leg4.radius+= .12345*.15
+                this.leg1x.radius+= .12345*.09
+                this.leg2x.radius+= .12345*.09
+                this.leg3x.radius+= .12345*.09
+                this.leg4x.radius+= .12345*.09
+                this.tongue.radius+= .12345*.09
     
-                this.leg1link.width += .33333* .15
-                this.leg2link.width += .33333* .15
-                this.leg2xlink.width += .33333* .15
-                this.leg1xlink.width += .33333* .15
+                this.leg1link.width += .12345* .15
+                this.leg2link.width += .12345* .15
+                this.leg2xlink.width += .12345* .15
+                this.leg1xlink.width += .12345* .15
     
-                this.leg3link.width += .33333* .15
-                this.leg4link.width += .33333* .15
-                this.leg3xlink.width += .33333* .15
-                this.leg4xlink.width += .33333* .15
+                this.leg3link.width += .12345* .15
+                this.leg4link.width += .12345* .15
+                this.leg3xlink.width += .12345* .15
+                this.leg4xlink.width += .12345* .15
                 canvas_context.translate(tadpole.body.x, tadpole.body.y)
                 canvas_context.scale(1/this.scale,1/this.scale)
-                this.scale *= .9969
+                this.scale *= .9989
                 canvas_context.scale(this.scale,this.scale)
                 canvas_context.translate(-tadpole.body.x, -tadpole.body.y)
 
@@ -1570,6 +1570,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let moment = time.getTime()
     let buttonzen = new Rectangle(100, 100, 100, 100, "#00ff00")
     let buttontime = new Rectangle(500, 500, 100, 100, "red")
+    let scorer = 0
 
     function main() {
         if(timed != 0){
@@ -1596,11 +1597,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     
             if(timed == 1){
                 let time = new Date()
-                if(time.getTime() - moment > 180000){
+                if(time.getTime() - moment > 300000){
+                    canvas_context.fillText("You got " + scorer, tadpole.body.x-(330/tadpole.scale), tadpole.body.y-(310/tadpole.scale))
                     
                 }else{
-                    
-                    canvas_context.fillText(Math.round((180000 -(time.getTime() - moment))/1000), tadpole.body.x-(330/tadpole.scale), tadpole.body.y-(310/tadpole.scale))
+                    scorer = tadpole.score
+                    canvas_context.fillText(Math.max(0, Math.round((300000 -(time.getTime() - moment))/1000)), tadpole.body.x-(330/tadpole.scale), tadpole.body.y-(310/tadpole.scale))
                 }
             }
         }else{
