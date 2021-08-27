@@ -2,13 +2,15 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
 
-    const squaretable = {} // this section of code is an optimization for use of the hypotenuse function on Line and LineOP objects
-    for(let t = 0;t<10000000;t++){
-        squaretable[`${t}`] = Math.sqrt(t)
-        if(t > 999){
-            t+=9
-        }
-    }
+    // const squaretable = {} // this section of code is an optimization for use of the hypotenuse function on Line and LineOP objects
+    // for(let t = 0;t<10000000;t++){
+    //     squaretable[`${t}`] = Math.sqrt(t)
+    //     if(t > 999){
+    //         t+=9
+    //     }
+    // }
+    let song = new Audio()
+    song.src = 'frog.mp3'
     const gamepadAPI = {
         controller: {},
         turbo: true,
@@ -117,10 +119,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
         isToward(point){
             let link = new LineOP(this.object, point)
-            let dis1 = link.sqrDis()
+            let dis1 = link.squareDistance()
             let dummy = new Point(this.object.x+this.xmom, this.object.y+this.ymom)
             let link2 = new LineOP(dummy, point)
-            let dis2 = link2.sqrDis()
+            let dis2 = link2.squareDistance()
             if(dis2 < dis1){
                 return true
             }else{
@@ -187,15 +189,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
             let xdif = this.x1 - this.x2
             let ydif = this.y1 - this.y2
             let hypotenuse = (xdif * xdif) + (ydif * ydif)
-            if(hypotenuse < 10000000-1){
-                if(hypotenuse > 1000){
-                    return squaretable[`${Math.round(10*Math.round((hypotenuse*.1)))}`]
-                }else{
-                return squaretable[`${Math.round(hypotenuse)}`]
-                }
-            }else{
+            // if(hypotenuse < 10000000-1){
+            //     if(hypotenuse > 1000){
+            //         return squaretable[`${Math.round(10*Math.round((hypotenuse*.1)))}`]
+            //     }else{
+            //     return squaretable[`${Math.round(hypotenuse)}`]
+            //     }
+            // }else{
                 return Math.sqrt(hypotenuse)
-            }
+            // }
         }
         draw() {
             let linewidthstorage = canvas_context.lineWidth
@@ -225,15 +227,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
             let xdif = this.object.x - this.target.x
             let ydif = this.object.y - this.target.y
             let hypotenuse = (xdif * xdif) + (ydif * ydif)
-            if(hypotenuse < 10000000-1){
-                if(hypotenuse > 1000){
-                    return squaretable[`${Math.round(10*Math.round((hypotenuse*.1)))}`]
-                }else{
-                return squaretable[`${Math.round(hypotenuse)}`]
-                }
-            }else{
+            // if(hypotenuse < 10000000-1){
+            //     if(hypotenuse > 1000){
+            //         return squaretable[`${Math.round(10*Math.round((hypotenuse*.1)))}`]
+            //     }else{
+            //     return squaretable[`${Math.round(hypotenuse)}`]
+            //     }
+            // }else{
                 return Math.sqrt(hypotenuse)
-            }
+            // }
         }
         angle() {
             return Math.atan2(this.object.y - this.target.y, this.object.x - this.target.x)
@@ -1382,7 +1384,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
             if(this.tonguedis < 3){
                 this.tonguedis = 3
-                if(keysPressed[' ']){
+                if(keysPressed[' '] || keysPressed['e'] || keysPressed['l']){
                     this.tonguemom = this.guidedis*5
                 }
             }
@@ -1469,7 +1471,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius)
             this.tonguelink.width = this.tongue.radius
             for(let t = 0;t<flies.length;t++){
-                if(flies[t].link.hypotenuse() < 700/tadpole.scale){
+                if(flies[t].link.squareDistance() < (700*700)/tadpole.scale){
                 if(this.tonguebeam.doesPerimeterTouch(flies[t].body)){
                     this.eat(flies[t], t)
                     t--
@@ -1557,7 +1559,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let tadpoles = []
     let tadpole = new Frog()
     let flies = []    
-    let floor = new Rectangle(-100000, 2350, 200000, 100000, "#FFFFAA")
+    let floor = new Rectangle(-1000000, 2350, 2000000, 100000, "#FFFFAA")
 
     for(let t = 0;t<240000;t++){
         flies.push(new Fly())
@@ -1573,7 +1575,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let buttontime = new Rectangle(500, 500, 100, 100, "red")
     let scorer = 0
 
+    let mute = 0
     function main() {
+        if(mute == 0){
+            song.play()
+        }else{
+            song.pause()
+        }
+
+        if(keysPressed['m']){
+            mute = 1
+        }
+        if(keysPressed['p']){
+            mute = 0
+        }
         if(timed != 0){
 
             canvas_context.clearRect(-1000000, -10000000, canvas.width*1000000, canvas.height*1000000)  // refreshes the image
@@ -1584,7 +1599,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 tadpoles[t].draw()
             }
             for(let t = 0;t<flies.length;t++){
-                if(flies[t].link.hypotenuse() < 700/tadpole.scale){
+                if(flies[t].link.squareDistance() < (700*700)/tadpole.scale){
                     flies[t].draw()
                 }
             }
