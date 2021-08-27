@@ -1538,7 +1538,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     class Fly{
         constructor(){
-            this.body = new Circle(-125300+ (Math.random()*250000), -8000+ (Math.random()*8350), 3, getRandomLightColor())
+            this.body = new Circle(-125300+ (Math.random()*250000), -16000+ (Math.random()*16350), 3, getRandomLightColor())
             this.link = new LineOP(this.body, tadpole.body, "transparent", 0)
             this.mag = Math.random()*5
         }
@@ -1558,12 +1558,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let flies = []    
     let floor = new Rectangle(-100000, 2350, 200000, 100000, "#FFFFAA")
 
-    for(let t = 0;t<120000;t++){
+    for(let t = 0;t<240000;t++){
         flies.push(new Fly())
     }
     let timed = 0
     let water = new Rectangle(-100000, 350, 200000, 100000, "#00AAFF44")
-    let grader = new RectangleGrad(-100000, -10000, 200000,20000, "red")
+    let grader = new RectangleGrad(-100000, -100000, 200000,200000, "red")
 
     tadpoles.push(tadpole)
     let time = new Date()
