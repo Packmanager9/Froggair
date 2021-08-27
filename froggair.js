@@ -1215,6 +1215,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             if(timed == 0){
                 if(buttontime.isPointInside(TIP_engine)){
                     timed = 1
+                    time = new Date()
                     moment = time.getTime()
                 }
                 if(buttonzen.isPointInside(TIP_engine)){
@@ -1562,8 +1563,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         flies.push(new Fly())
     }
     let timed = 0
-    let water = new Rectangle(-100000, 350, 200000, 100000, "#00AAFF44")
-    let grader = new RectangleGrad(-100000, -100000, 200000,200000, "red")
+    let water = new Rectangle(-1000000, 350, 2000000, 100000, "#00AAFF44")
+    let grader = new RectangleGrad(-1000000, -100000, 2000000,200000, "red")
 
     tadpoles.push(tadpole)
     let time = new Date()
