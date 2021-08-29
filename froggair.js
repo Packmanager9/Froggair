@@ -1215,13 +1215,80 @@ window.addEventListener('DOMContentLoaded', (event) => {
             TIP_engine.y = YS_engine
             TIP_engine.body = TIP_engine
             if(timed == 0){
-                if(buttontime.isPointInside(TIP_engine)){
+                if(buttontimeb.isPointInside(TIP_engine)){
                     timed = 1
                     time = new Date()
                     moment = time.getTime()
+                    
+                    tadpoles[0] = new BullFrog()
+                                        
+                        for(let t = 0;t<240000;t++){
+                            flies.push(new Fly())
+                        }
                 }
-                if(buttonzen.isPointInside(TIP_engine)){
+                if(buttonzenb.isPointInside(TIP_engine)){
                     timed = -1
+                    
+                    tadpoles[0] = new BullFrog()                       
+                    for(let t = 0;t<240000;t++){
+                        flies.push(new Fly())
+                    }
+                }
+
+                if(buttontimeg.isPointInside(TIP_engine)){
+                    timed = 1
+                    time = new Date()
+                    moment = time.getTime()
+                    
+                    tadpoles[0] = new GlideFrog()                       
+                    for(let t = 0;t<240000;t++){
+                        flies.push(new Fly())
+                    }
+                }
+                if(buttonzeng.isPointInside(TIP_engine)){
+                    timed = -1
+                    
+                    tadpoles[0] = new GlideFrog()                       
+                    for(let t = 0;t<240000;t++){
+                        flies.push(new Fly())
+                    }
+                }
+
+
+                if(buttontimef.isPointInside(TIP_engine)){
+                    timed = 1
+                    time = new Date()
+                    moment = time.getTime()
+                    
+                    tadpoles[0] = new Frog()                       
+                    for(let t = 0;t<240000;t++){
+                        flies.push(new Fly())
+                    }
+                }
+                if(buttonzenf.isPointInside(TIP_engine)){
+                    timed = -1
+                    tadpoles[0] = new Frog()                       
+                    for(let t = 0;t<240000;t++){
+                        flies.push(new Fly())
+                    }
+                }
+
+                if(buttontimep.isPointInside(TIP_engine)){
+                    timed = 1
+                    time = new Date()
+                    moment = time.getTime()
+                    
+                    tadpoles[0] = new PygmyFrog()                       
+                    for(let t = 0;t<240000;t++){
+                        flies.push(new Fly())
+                    }
+                }
+                if(buttonzenp.isPointInside(TIP_engine)){
+                    timed = -1
+                    tadpoles[0] = new PygmyFrog()                       
+                    for(let t = 0;t<240000;t++){
+                        flies.push(new Fly())
+                    }
                 }
             }
             // example usage: if(object.isPointInside(TIP_engine)){ take action }
@@ -1471,7 +1538,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius)
             this.tonguelink.width = this.tongue.radius
             for(let t = 0;t<flies.length;t++){
-                if(flies[t].link.squareDistance() < (700*700)/tadpole.scale){
+                if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
                 if(this.tonguebeam.doesPerimeterTouch(flies[t].body)){
                     this.eat(flies[t], t)
                     t--
@@ -1513,11 +1580,571 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 this.leg4link.width += .12345* .15
                 this.leg3xlink.width += .12345* .15
                 this.leg4xlink.width += .12345* .15
-                canvas_context.translate(tadpole.body.x, tadpole.body.y)
+                canvas_context.translate(tadpoles[0].body.x, tadpoles[0].body.y)
                 canvas_context.scale(1/this.scale,1/this.scale)
                 this.scale *= .9989
                 canvas_context.scale(this.scale,this.scale)
-                canvas_context.translate(-tadpole.body.x, -tadpole.body.y)
+                canvas_context.translate(-tadpoles[0].body.x, -tadpoles[0].body.y)
+
+        flies.push(new Fly())
+            }
+        }
+    }
+
+    
+    class PygmyFrog{
+        constructor(){
+            this.color = getRandomFrogColor()
+            this.angle = 0
+            this.body = new Circle(350, 350, 3, this.color)
+            this.guide = new Circle(353, 350, 2, this.color)
+            this.tongue = new Circle(353, 350, 2, getRandomFrogColor())
+            this.guidedis = 3
+            this.links = []
+            this.eye1 = new Circle(350,350, 1.1, 'black')
+            this.eye2 = new Circle(350,350, 1.1, 'black')
+            this.leg1 = new Circle(350,350, 2, this.color)
+            this.leg2 = new Circle(350,350, 2, this.color)
+            this.leg1x = new Circle(350,350, 1.5, this.color)
+            this.leg2x = new Circle(350,350, 1.5, this.color)
+            this.leg1link = new LineOP(this.body,this.leg1, this.color, 4)
+            this.leg2link = new LineOP(this.body,this.leg2,this.color, 4)
+            this.leg1xlink = new LineOP(this.leg1x,this.leg1,this.color, 2.5)
+            this.leg2xlink = new LineOP(this.leg2x,this.leg2, this.color, 2.5)
+            this.leg3 = new Circle(350,350, 2, this.color)
+            this.leg4 = new Circle(350,350, 2, this.color)
+            this.leg3x = new Circle(350,350, 1.5, this.color)
+            this.leg4x = new Circle(350,350, 1.5, this.color)
+            this.leg3link = new LineOP(this.body,this.leg3, this.color, 2.5)
+            this.leg4link = new LineOP(this.body,this.leg4,this.color, 2.5)
+            this.leg3xlink = new LineOP(this.leg3x,this.leg3,this.color, 1)
+            this.leg4xlink = new LineOP(this.leg4x,this.leg4, this.color, 1)
+            this.tonguelink = new LineOP(this.body,this.tongue, this.tongue.color, 1.5)
+            this.combo = 0
+            this.spindle = 1
+            this.timeratio = .8
+            this.tonguedis = 2.9
+            this.tonguemom = 0
+            this.scale = 1
+            this.scores = []
+            this.score = 0
+        }
+        draw(){
+            for(let t = 0;t<this.scores.length;t++){
+                this.scores[t].draw()
+            }
+            if(this.tonguedis < 3){
+                this.tonguedis = 3
+                if(keysPressed[' '] || keysPressed['e'] || keysPressed['l']){
+                    this.tonguemom = this.guidedis*5
+                }
+            }
+            this.tonguedis += this.tonguemom
+            this.tonguedis *= .93
+            this.tonguedis -= 1
+            this.tonguemom *= .91
+            this.body.move()
+            if(keysPressed['w'] || !water.isPointInside(this.body)){
+                if(keysPressed['w']){
+                    this.timeratio = .92 + ((Math.cos(this.spindle))*.15)
+                    this.spindle+=.1
+                }
+            }
+            if( !water.isPointInside(this.body)){
+                this.body.ymom += .08
+            }
+
+            this.guide.x = (Math.cos(this.angle)*this.guidedis)+this.body.x
+            this.guide.y = (Math.sin(this.angle)*this.guidedis)+this.body.y
+            this.tongue.x = (Math.cos(this.angle)*this.tonguedis)+this.body.x
+            this.tongue.y = (Math.sin(this.angle)*this.tonguedis)+this.body.y
+
+            this.tongue.draw()
+            this.tonguelink.draw()
+            this.body.draw()
+            this.eye1.x = (Math.cos(this.angle-.58)*this.guidedis)+this.body.x
+            this.eye1.y = (Math.sin(this.angle-.58)*this.guidedis)+this.body.y
+            this.eye2.x = (Math.cos(this.angle+.58)*this.guidedis)+this.body.x
+            this.eye2.y = (Math.sin(this.angle+.58)*this.guidedis)+this.body.y
+            this.leg1.x = (Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)+this.body.x
+            this.leg1.y = (Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)+this.body.y
+            this.leg2.x = (Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)+this.body.x
+            this.leg2.y = (Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)+this.body.y
+            this.leg1x.x = (Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)+this.body.x
+            this.leg1x.y = (Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)+this.body.y
+            this.leg2x.x = (Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)+this.body.x
+            this.leg2x.y = (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)+this.body.y
+            this.leg3.x = this.body.x-(Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)
+            this.leg3.y = this.body.y-(Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)
+            this.leg4.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)
+            this.leg4.y = this.body.y-(Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)
+            this.leg3x.x =  this.body.x-(Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)
+            this.leg3x.y =  this.body.y-(Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)
+            this.leg4x.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)
+            this.leg4x.y =this.body.y- (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)
+            if(keysPressed['d']){
+                this.angle+=.075
+            }
+            if(keysPressed['a']){
+                this.angle-=.075
+            }
+
+            if(keysPressed['w'] && water.isPointInside(this.body)){
+                this.combo = 0
+                this.scores = []
+            this.body.xmom = (this.body.xmom*.95)+(((this.guide.x-this.body.x)*1.85)*.09)
+            this.body.ymom = (this.body.ymom*.95)+(((this.guide.y-this.body.y)*1.85)*.09)
+            }else{
+                if(water.isPointInside(this.body)){
+                    this.body.xmom*=.99
+                    this.body.ymom*=.99
+                }
+            }
+            // this.guide.draw()
+            this.eye1.draw()
+            this.eye2.draw()
+            this.leg1.draw()
+            this.leg2.draw()
+            this.leg1x.draw()
+            this.leg2x.draw()
+            this.leg1link.draw()
+            this.leg2link.draw()
+            this.leg1xlink.draw()
+            this.leg2xlink.draw()
+            this.leg3.draw()
+            this.leg4.draw()
+            this.leg3x.draw()
+            this.leg4x.draw()
+            this.leg3link.draw()
+            this.leg4link.draw()
+            this.leg3xlink.draw()
+            this.leg4xlink.draw()
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*4, this.tongue.radius*1.5)
+            this.tonguelink.width = this.tongue.radius
+            for(let t = 0;t<flies.length;t++){
+                if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
+                if(this.tonguebeam.doesPerimeterTouch(flies[t].body)){
+                    this.eat(flies[t], t)
+                    t--
+                }
+            }
+            }
+            if(floor.isPointInside(this.body)){
+                this.body.ymom*=-2
+                this.body.move()
+            }
+        }
+        eat(fly,t){
+            
+            this.combo++
+            this.score+=this.combo
+            this.scores.push(new Text(fly.body.x, fly.body.y, this.combo))
+            flies.splice(t,1)
+            if(this.body.radius < 20){
+                this.guidedis+= .12345*.3
+                this.body.radius+= .12345*.15
+                this.eye2.radius+= .12345*.03
+                this.eye1.radius+= .12345*.03
+                this.leg1.radius+= .12345*.15
+                this.leg2.radius+= .12345*.15
+                this.leg3.radius+= .12345*.15
+                this.leg4.radius+= .12345*.15
+                this.leg1x.radius+= .12345*.09
+                this.leg2x.radius+= .12345*.09
+                this.leg3x.radius+= .12345*.09
+                this.leg4x.radius+= .12345*.09
+                this.tongue.radius+= .12345*.09
+    
+                this.leg1link.width += .12345* .15
+                this.leg2link.width += .12345* .15
+                this.leg2xlink.width += .12345* .15
+                this.leg1xlink.width += .12345* .15
+    
+                this.leg3link.width += .12345* .15
+                this.leg4link.width += .12345* .15
+                this.leg3xlink.width += .12345* .15
+                this.leg4xlink.width += .12345* .15
+                canvas_context.translate(tadpoles[0].body.x, tadpoles[0].body.y)
+                canvas_context.scale(1/this.scale,1/this.scale)
+                this.scale *= .9989
+                canvas_context.scale(this.scale,this.scale)
+                canvas_context.translate(-tadpoles[0].body.x, -tadpoles[0].body.y)
+
+        flies.push(new Fly())
+            }
+        }
+    }
+
+    
+    class BullFrog{
+        constructor(){
+            this.color = getRandomFrogColor()
+            this.angle = 0
+            this.body = new Circle(350, 350, 8, this.color)
+            this.guide = new Circle(353, 350, 3, this.color)
+            this.tongue = new Circle(353, 350, 5, getRandomFrogColor())
+            this.guidedis = 3
+            this.links = []
+            this.eye1 = new Circle(350,350, 1.1, 'black')
+            this.eye2 = new Circle(350,350, 1.1, 'black')
+            this.leg1 = new Circle(350,350, 3, this.color)
+            this.leg2 = new Circle(350,350, 3, this.color)
+            this.leg1x = new Circle(350,350, 2, this.color)
+            this.leg2x = new Circle(350,350, 2, this.color)
+            this.leg1link = new LineOP(this.body,this.leg1, this.color, 4)
+            this.leg2link = new LineOP(this.body,this.leg2,this.color, 4)
+            this.leg1xlink = new LineOP(this.leg1x,this.leg1,this.color, 2.5)
+            this.leg2xlink = new LineOP(this.leg2x,this.leg2, this.color, 2.5)
+            this.leg3 = new Circle(350,350, 3, this.color)
+            this.leg4 = new Circle(350,350, 3, this.color)
+            this.leg3x = new Circle(350,350, 2, this.color)
+            this.leg4x = new Circle(350,350, 2, this.color)
+            this.leg3link = new LineOP(this.body,this.leg3, this.color, 4)
+            this.leg4link = new LineOP(this.body,this.leg4,this.color, 4)
+            this.leg3xlink = new LineOP(this.leg3x,this.leg3,this.color, 2.5)
+            this.leg4xlink = new LineOP(this.leg4x,this.leg4, this.color, 2.5)
+            this.tonguelink = new LineOP(this.body,this.tongue, this.tongue.color, 2.5)
+            this.combo = 0
+            this.spindle = 1
+            this.timeratio = .8
+            this.tonguedis = 2.9
+            this.tonguemom = 0
+            this.scale = 1
+            this.scores = []
+            this.score = 0
+        }
+        draw(){
+            for(let t = 0;t<this.scores.length;t++){
+                this.scores[t].draw()
+            }
+            if(this.tonguedis < 3){
+                this.tonguedis = 3
+                if(keysPressed[' '] || keysPressed['e'] || keysPressed['l']){
+                    this.tonguemom = this.guidedis*5
+                }
+            }
+            this.tonguedis += this.tonguemom
+            this.tonguedis *= .95
+            this.tonguedis -= 1
+            this.tonguemom *= .90
+            this.body.move()
+            if(keysPressed['w'] || !water.isPointInside(this.body)){
+                if(keysPressed['w']){
+                    this.timeratio = .92 + ((Math.cos(this.spindle))*.15)
+                    this.spindle+=.1
+                }
+            }
+            if( !water.isPointInside(this.body)){
+                this.body.ymom += .08
+            }
+
+            this.guide.x = (Math.cos(this.angle)*this.guidedis)+this.body.x
+            this.guide.y = (Math.sin(this.angle)*this.guidedis)+this.body.y
+            this.tongue.x = (Math.cos(this.angle)*this.tonguedis)+this.body.x
+            this.tongue.y = (Math.sin(this.angle)*this.tonguedis)+this.body.y
+
+            this.tongue.draw()
+            this.tonguelink.draw()
+            this.body.draw()
+            this.eye1.x = (Math.cos(this.angle-.58)*this.guidedis)+this.body.x
+            this.eye1.y = (Math.sin(this.angle-.58)*this.guidedis)+this.body.y
+            this.eye2.x = (Math.cos(this.angle+.58)*this.guidedis)+this.body.x
+            this.eye2.y = (Math.sin(this.angle+.58)*this.guidedis)+this.body.y
+            this.leg1.x = (Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.x
+            this.leg1.y = (Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.y
+            this.leg2.x = (Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.x
+            this.leg2.y = (Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.y
+            this.leg1x.x = (Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)+this.body.x
+            this.leg1x.y = (Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)+this.body.y
+            this.leg2x.x = (Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)+this.body.x
+            this.leg2x.y = (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)+this.body.y
+            this.leg3.x = this.body.x-(Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)
+            this.leg3.y = this.body.y-(Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)
+            this.leg4.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)
+            this.leg4.y = this.body.y-(Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)
+            this.leg3x.x =  this.body.x-(Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)
+            this.leg3x.y =  this.body.y-(Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)
+            this.leg4x.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)
+            this.leg4x.y =this.body.y- (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)
+            if(keysPressed['d']){
+                this.angle+=.055
+            }
+            if(keysPressed['a']){
+                this.angle-=.055
+            }
+
+            if(keysPressed['w'] && water.isPointInside(this.body)){
+                this.combo = 0
+                this.scores = []
+            this.body.xmom = (this.body.xmom*.95)+(((this.guide.x-this.body.x)*1.45)*.07)
+            this.body.ymom = (this.body.ymom*.95)+(((this.guide.y-this.body.y)*1.45)*.07)
+            }else{
+                if(water.isPointInside(this.body)){
+                    this.body.xmom*=.98
+                    this.body.ymom*=.98
+                }
+            }
+            this.guide.draw()
+            this.eye1.draw()
+            this.eye2.draw()
+            this.leg1.draw()
+            this.leg2.draw()
+            this.leg1x.draw()
+            this.leg2x.draw()
+            this.leg1link.draw()
+            this.leg2link.draw()
+            this.leg1xlink.draw()
+            this.leg2xlink.draw()
+            this.leg3.draw()
+            this.leg4.draw()
+            this.leg3x.draw()
+            this.leg4x.draw()
+            this.leg3link.draw()
+            this.leg4link.draw()
+            this.leg3xlink.draw()
+            this.leg4xlink.draw()
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius)
+            this.tonguelink.width = this.tongue.radius
+            for(let t = 0;t<flies.length;t++){
+                if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
+                    if(this.tonguebeam.doesPerimeterTouch(flies[t].body)){
+                        this.eat(flies[t], t)
+                        t--
+                    }else if(this.body.doesPerimeterTouch(flies[t].body)){
+                        this.eat(flies[t], t)
+                        t--
+                    }
+            }
+            }
+            if(floor.isPointInside(this.body)){
+                this.body.ymom*=-2
+                this.body.move()
+            }
+        }
+        eat(fly,t){
+            
+            this.combo++
+            this.score+=this.combo
+            this.scores.push(new Text(fly.body.x, fly.body.y, this.combo))
+            flies.splice(t,1)
+            if(this.body.radius < 50){
+                this.guidedis+= .12345*.28
+                this.body.radius+= .12345*.7
+                this.eye2.radius+= .12345*.03
+                this.eye1.radius+= .12345*.03
+                this.leg1.radius+= .12345*.15
+                this.leg2.radius+= .12345*.15
+                this.leg3.radius+= .12345*.15
+                this.leg4.radius+= .12345*.15
+                this.leg1x.radius+= .12345*.09
+                this.leg2x.radius+= .12345*.09
+                this.leg3x.radius+= .12345*.09
+                this.leg4x.radius+= .12345*.09
+                this.tongue.radius+= .12345*.13
+    
+                this.leg1link.width += .12345* .15
+                this.leg2link.width += .12345* .15
+                this.leg2xlink.width += .12345* .15
+                this.leg1xlink.width += .12345* .15
+    
+                this.leg3link.width += .12345* .15
+                this.leg4link.width += .12345* .15
+                this.leg3xlink.width += .12345* .15
+                this.leg4xlink.width += .12345* .15
+                canvas_context.translate(tadpoles[0].body.x, tadpoles[0].body.y)
+                canvas_context.scale(1/this.scale,1/this.scale)
+                this.scale *= .9989
+                canvas_context.scale(this.scale,this.scale)
+                canvas_context.translate(-tadpoles[0].body.x, -tadpoles[0].body.y)
+
+        flies.push(new Fly())
+            }
+        }
+    }
+
+    
+    class GlideFrog{
+        constructor(){
+            this.color = getRandomFrogColor()
+            this.angle = 0
+            this.body = new Circle(350, 350, 4, this.color)
+            this.guide = new Circle(353, 350, 3, this.color)
+            this.tongue = new Circle(353, 350, 3, getRandomFrogColor())
+            this.guidedis = 3
+            this.links = []
+            this.eye1 = new Circle(350,350, 1.1, 'black')
+            this.eye2 = new Circle(350,350, 1.1, 'black')
+            this.leg1 = new Circle(350,350, 3, this.color)
+            this.leg2 = new Circle(350,350, 3, this.color)
+            this.leg1x = new Circle(350,350, 5, this.color)
+            this.leg2x = new Circle(350,350, 5, this.color)
+            this.leg1link = new LineOP(this.body,this.leg1, this.color, 4)
+            this.leg2link = new LineOP(this.body,this.leg2,this.color, 4)
+            this.leg1xlink = new LineOP(this.leg1x,this.leg1,this.color, 3.5)
+            this.leg2xlink = new LineOP(this.leg2x,this.leg2, this.color, 3.5)
+            this.leg3 = new Circle(350,350, 3, this.color)
+            this.leg4 = new Circle(350,350, 3, this.color)
+            this.leg3x = new Circle(350,350, 5, this.color)
+            this.leg4x = new Circle(350,350, 5, this.color)
+            this.leg3link = new LineOP(this.body,this.leg3, this.color, 5)
+            this.leg4link = new LineOP(this.body,this.leg4,this.color, 5)
+            this.leg3xlink = new LineOP(this.leg3x,this.leg3,this.color, 3.5)
+            this.leg4xlink = new LineOP(this.leg4x,this.leg4, this.color, 3.5)
+            this.tonguelink = new LineOP(this.body,this.tongue, this.tongue.color, 2.5)
+            this.combo = 0
+            this.spindle = 1
+            this.timeratio = .95
+            this.tonguedis = 2.9
+            this.tonguemom = 0
+            this.scale = 1
+            this.scores = []
+            this.score = 0
+        }
+        draw(){
+            for(let t = 0;t<this.scores.length;t++){
+                this.scores[t].draw()
+            }
+            if(this.tonguedis < 3){
+                this.tonguedis = 3
+                if(keysPressed[' '] || keysPressed['e'] || keysPressed['l']){
+                    this.tonguemom = this.guidedis*4
+                }
+            }
+            this.tonguedis += this.tonguemom
+            this.tonguedis *= .93
+            this.tonguedis -= 1
+            this.tonguemom *= .91
+            this.body.move()
+            if(keysPressed['w'] || !water.isPointInside(this.body)){
+                if(keysPressed['w']){
+                    if(water.isPointInside(this.body)){
+                    this.timeratio = .95 + ((Math.cos(this.spindle))*.13)
+                    this.spindle+=.1
+                    }
+                }
+            }
+            if( !water.isPointInside(this.body)){
+                this.body.ymom += .08
+                if(keysPressed['w']){
+                this.body.ymom -= .05
+                }
+            }
+
+            this.guide.x = (Math.cos(this.angle)*this.guidedis)+this.body.x
+            this.guide.y = (Math.sin(this.angle)*this.guidedis)+this.body.y
+            this.tongue.x = (Math.cos(this.angle)*this.tonguedis)+this.body.x
+            this.tongue.y = (Math.sin(this.angle)*this.tonguedis)+this.body.y
+
+            this.tongue.draw()
+            this.tonguelink.draw()
+            this.body.draw()
+            this.eye1.x = (Math.cos(this.angle-.58)*this.guidedis)+this.body.x
+            this.eye1.y = (Math.sin(this.angle-.58)*this.guidedis)+this.body.y
+            this.eye2.x = (Math.cos(this.angle+.58)*this.guidedis)+this.body.x
+            this.eye2.y = (Math.sin(this.angle+.58)*this.guidedis)+this.body.y
+            this.leg1.x = (Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.x
+            this.leg1.y = (Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.y
+            this.leg2.x = (Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.x
+            this.leg2.y = (Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.y
+            this.leg1x.x = (Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)+this.body.x
+            this.leg1x.y = (Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)+this.body.y
+            this.leg2x.x = (Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)+this.body.x
+            this.leg2x.y = (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)+this.body.y
+            this.leg3.x = this.body.x-(Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)
+            this.leg3.y = this.body.y-(Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)
+            this.leg4.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)
+            this.leg4.y = this.body.y-(Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)
+            this.leg3x.x =  this.body.x-(Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)
+            this.leg3x.y =  this.body.y-(Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)
+            this.leg4x.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)
+            this.leg4x.y =this.body.y- (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*6)
+            if(keysPressed['d']){
+                this.angle+=.055
+            }
+            if(keysPressed['a']){
+                this.angle-=.055
+            }
+
+            if(keysPressed['w'] && water.isPointInside(this.body)){
+                this.combo = 0
+                this.scores = []
+            this.body.xmom = (this.body.xmom*.95)+(((this.guide.x-this.body.x)*1.45)*.07)
+            this.body.ymom = (this.body.ymom*.95)+(((this.guide.y-this.body.y)*1.45)*.07)
+            }else{
+                if(water.isPointInside(this.body)){
+                    this.body.xmom*=.98
+                    this.body.ymom*=.98
+                }
+            }
+            this.guide.draw()
+            this.eye1.draw()
+            this.eye2.draw()
+            this.leg1.draw()
+            this.leg2.draw()
+            this.leg1x.draw()
+            this.leg2x.draw()
+            this.leg1link.draw()
+            this.leg2link.draw()
+            this.leg1xlink.draw()
+            this.leg2xlink.draw()
+            this.leg3.draw()
+            this.leg4.draw()
+            this.leg3x.draw()
+            this.leg4x.draw()
+            this.leg3link.draw()
+            this.leg4link.draw()
+            this.leg3xlink.draw()
+            this.leg4xlink.draw()
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius)
+            this.tonguelink.width = this.tongue.radius
+            for(let t = 0;t<flies.length;t++){
+                if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
+                if(this.tonguebeam.doesPerimeterTouch(flies[t].body)){
+                    this.eat(flies[t], t)
+                    t--
+                }
+            }
+            }
+            if(floor.isPointInside(this.body)){
+                this.body.ymom*=-2
+                this.body.move()
+            }
+        }
+        eat(fly,t){
+            
+            this.combo++
+            this.score+=this.combo
+            this.scores.push(new Text(fly.body.x, fly.body.y, this.combo))
+            flies.splice(t,1)
+            if(this.body.radius < 30){
+                this.guidedis+= .12345*.31
+                this.body.radius+= .12345*.28
+                this.eye2.radius+= .12345*.03
+                this.eye1.radius+= .12345*.03
+                this.leg1.radius+= .12345*.15
+                this.leg2.radius+= .12345*.15
+                this.leg3.radius+= .12345*.15
+                this.leg4.radius+= .12345*.15
+                this.leg1x.radius+= .12345*.19
+                this.leg2x.radius+= .12345*.19
+                this.leg3x.radius+= .12345*.19
+                this.leg4x.radius+= .12345*.19
+                this.tongue.radius+= .12345*.19
+    
+                this.leg1link.width += .12345* .22
+                this.leg2link.width += .12345* .22
+                this.leg2xlink.width += .12345* .22
+                this.leg1xlink.width += .12345* .22
+    
+                this.leg3link.width += .12345* .22
+                this.leg4link.width += .12345* .22
+                this.leg3xlink.width += .12345* .22
+                this.leg4xlink.width += .12345* .22
+                canvas_context.translate(tadpoles[0].body.x, tadpoles[0].body.y)
+                canvas_context.scale(1/this.scale,1/this.scale)
+                this.scale *= .9989
+                canvas_context.scale(this.scale,this.scale)
+                canvas_context.translate(-tadpoles[0].body.x, -tadpoles[0].body.y)
 
         flies.push(new Fly())
             }
@@ -1533,7 +2160,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
         draw(){
             canvas_context.fillStyle = this.color
-            let size = 20/tadpole.scale
+            let size = 20/tadpoles[0].scale
             canvas_context.font = `${size}px arial`
             canvas_context.fillText(this.num, this.x, this.y)
         }
@@ -1542,7 +2169,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     class Fly{
         constructor(){
             this.body = new Circle(-125300+ (Math.random()*250000), -16000+ (Math.random()*16350), 3, getRandomLightColor())
-            this.link = new LineOP(this.body, tadpole.body, "transparent", 0)
+            this.link = new LineOP(this.body, tadpoles[0].body, "transparent", 0)
             this.mag = Math.random()*5
         }
         draw(){
@@ -1557,26 +2184,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 
     let tadpoles = []
-    let tadpole = new Frog()
+    tadpoles[0] = new GlideFrog()
     let flies = []    
     let floor = new Rectangle(-1000000, 2350, 2000000, 100000, "#FFFFAA")
 
-    for(let t = 0;t<240000;t++){
-        flies.push(new Fly())
-    }
     let timed = 0
     let water = new Rectangle(-1000000, 350, 2000000, 100000, "#00AAFF44")
     let grader = new RectangleGrad(-1000000, -100000, 2000000,200000, "red")
 
-    tadpoles.push(tadpole)
     let time = new Date()
     let moment = time.getTime()
-    let buttonzen = new Rectangle(100, 100, 100, 100, "#00ff00")
-    let buttontime = new Rectangle(500, 500, 100, 100, "red")
+    let buttonzenb = new Rectangle(100, 100, 190, 100, "#00ff00")
+    let buttonzeng = new Rectangle(100, 250, 190, 100, "#00ff00")
+    let buttonzenf = new Rectangle(100, 400, 190, 100, "#00ff00")
+    let buttonzenp = new Rectangle(100, 550, 190, 100, "#00ff00")
+    let buttontimeb = new Rectangle(490, 100, 190, 100, "red")
+    let buttontimeg = new Rectangle(490, 250, 190, 100, "red")
+    let buttontimef = new Rectangle(490, 400, 190, 100, "red")
+    let buttontimep = new Rectangle(490, 550, 199, 100, "red")
     let scorer = 0
 
     let mute = 0
     function main() {
+        // if(keysPressed['Escape']){
+        //     canvas_context.clearRect(-1000000, -10000000, canvas.width*1000000, canvas.height*1000000)  
+        //     timed = 0
+        // }
         if(mute == 0){
             song.play()
         }else{
@@ -1599,7 +2232,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 tadpoles[t].draw()
             }
             for(let t = 0;t<flies.length;t++){
-                if(flies[t].link.squareDistance() < (700*700)/tadpole.scale){
+                if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
                     flies[t].draw()
                 }
             }
@@ -1607,29 +2240,48 @@ window.addEventListener('DOMContentLoaded', (event) => {
             floor.draw()
     
             canvas_context.fillStyle = "white"
-            let size = 20/tadpole.scale
+            let size = 20/tadpoles[0].scale
             canvas_context.font = `${size}px arial`
-            canvas_context.fillText(tadpole.score, tadpole.body.x-(330/tadpole.scale), tadpole.body.y-(330/tadpole.scale))
+            canvas_context.fillText(tadpoles[0].score, tadpoles[0].body.x-(330/tadpoles[0].scale), tadpoles[0].body.y-(330/tadpoles[0].scale))
     
             if(timed == 1){
                 let time = new Date()
                 if(time.getTime() - moment > 300000){
-                    canvas_context.fillText("You got " + scorer, tadpole.body.x-(330/tadpole.scale), tadpole.body.y-(310/tadpole.scale))
+                    canvas_context.fillText("You got " + scorer, tadpoles[0].body.x-(330/tadpoles[0].scale), tadpoles[0].body.y-(310/tadpoles[0].scale))
                     
                 }else{
-                    scorer = tadpole.score
-                    canvas_context.fillText(Math.max(0, Math.round((300000 -(time.getTime() - moment))/1000)), tadpole.body.x-(330/tadpole.scale), tadpole.body.y-(310/tadpole.scale))
+                    scorer = tadpoles[0].score
+                    canvas_context.fillText(Math.max(0, Math.round((300000 -(time.getTime() - moment))/1000)), tadpoles[0].body.x-(330/tadpoles[0].scale), tadpoles[0].body.y-(310/tadpoles[0].scale))
                 }
             }
         }else{
-            buttontime.draw()
-            buttonzen.draw()
-            let size = 20/tadpole.scale
+            buttontimeb.draw()
+            buttonzenb.draw()
+            buttontimeg.draw()
+            buttonzeng.draw()
+            buttontimef.draw()
+            buttonzenf.draw()
+            buttontimep.draw()
+            buttonzenp.draw()
+            let size = 20/tadpoles[0].scale
             canvas_context.font = `${size}px arial`
             canvas_context.fillStyle = "black"
-            canvas_context.fillText("Zen", 120, 150)
+            canvas_context.fillText("Zen Bullfrog", 120, 150)
             canvas_context.fillStyle = "white"
-            canvas_context.fillText("Timed", 520, 550)
+            canvas_context.fillText("Timed Frog", 520, 450)
+            canvas_context.fillStyle = "black"
+            canvas_context.fillText("Zen Glidefrog", 120, 300)
+            canvas_context.fillStyle = "white"
+            canvas_context.fillText("Timed Glidefrog", 520, 300)
+            canvas_context.fillStyle = "black"
+            canvas_context.fillText("Zen Frog", 120, 450)
+            canvas_context.fillStyle = "white"
+            canvas_context.fillText("Timed Bullfrog", 520, 150)
+
+            canvas_context.fillStyle = "black"
+            canvas_context.fillText("Zen Pygmy Frog", 120, 600)
+            canvas_context.fillStyle = "white"
+            canvas_context.fillText("Timed Pygmy Frog", 510, 600)
 
         }
     }
