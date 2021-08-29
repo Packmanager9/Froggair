@@ -1516,9 +1516,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     this.body.ymom*=.98
                 }
             }
-            this.guide.draw()
-            this.eye1.draw()
-            this.eye2.draw()
+            // this.guide.draw()
             this.leg1.draw()
             this.leg2.draw()
             this.leg1x.draw()
@@ -1549,6 +1547,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 this.body.ymom*=-2
                 this.body.move()
             }
+
+
+
+            this.foot1 = new Foot(this.leg1x, this.leg1xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.foot1 = new Foot(this.leg2x, this.leg2xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.foot1 = new Foot(this.leg3x, this.leg3xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.foot1 = new Foot(this.leg4x, this.leg4xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.eye1.draw()
+            this.eye2.draw()
         }
         eat(fly,t){
             
@@ -1589,6 +1604,96 @@ window.addEventListener('DOMContentLoaded', (event) => {
         flies.push(new Fly())
             }
         }
+    }
+
+    class GlideFoot{
+        constructor(root, angle, step){
+            this.body = root
+            this.toes = []
+            this.angle = angle-step
+            this.step = step
+            for(let t = 0;t<3;t++){
+                let toe = new Circle(this.body.x+(Math.cos(this.angle)*this.body.radius*2), this.body.y+(Math.sin(this.angle)*this.body.radius*2), this.body.radius*.5, this.body.color)
+                let link = new LineOP(toe, this.body, this.body.color+"44", toe.radius*.5)
+                this.angle+=this.step
+                this.toes.push(toe)
+                this.toes.push(link)
+            }
+
+        }
+        draw(){
+            for(let t = 0;t<this.toes.length;t++){
+                this.toes[t].draw()
+            }
+        }
+    }
+
+    
+    class BullFoot{
+        constructor(root, angle, step){
+            this.body = root
+            this.toes = []
+            this.angle = angle-step
+            this.step = step
+            for(let t = 0;t<3;t++){
+                let toe = new Circle(this.body.x+(Math.cos(this.angle)*this.body.radius*1.8), this.body.y+(Math.sin(this.angle)*this.body.radius*1.8), this.body.radius*.3, this.body.color)
+                let link = new LineOP(toe, this.body, this.body.color+"44", toe.radius*.9)
+                this.angle+=this.step
+                this.toes.push(toe)
+                this.toes.push(link)
+            }
+
+        }
+        draw(){
+            for(let t = 0;t<this.toes.length;t++){
+                this.toes[t].draw()
+            }
+        }
+    }
+
+    
+    class Foot{
+        constructor(root, angle, step){
+            this.body = root
+            this.toes = []
+            this.angle = angle-step
+            this.step = step
+            for(let t = 0;t<3;t++){
+                let toe = new Circle(this.body.x+(Math.cos(this.angle)*this.body.radius*1.8), this.body.y+(Math.sin(this.angle)*this.body.radius*1.8), this.body.radius*.8, this.body.color)
+                let link = new LineOP(toe, this.body, this.body.color+"44", toe.radius*.9)
+                this.angle+=this.step
+                this.toes.push(toe)
+                this.toes.push(link)
+            }
+
+        }
+        draw(){
+            for(let t = 0;t<this.toes.length;t++){
+                this.toes[t].draw()
+            }
+        }
+    }
+    
+        class PygmyFoot{
+            constructor(root, angle, step){
+                this.body = root
+                this.toes = []
+                this.angle = angle-step
+                this.step = step
+                for(let t = 0;t<3;t++){
+                    let toe = new Circle(this.body.x+(Math.cos(this.angle)*this.body.radius*2.1), this.body.y+(Math.sin(this.angle)*this.body.radius*2.1), this.body.radius*.2, this.body.color)
+                    let link = new LineOP(toe, this.body, this.body.color+"44", toe.radius*.9)
+                    this.angle+=this.step
+                    this.toes.push(toe)
+                    this.toes.push(link)
+                }
+    
+            }
+            draw(){
+                for(let t = 0;t<this.toes.length;t++){
+                    this.toes[t].draw()
+                }
+            }
     }
 
     
@@ -1662,26 +1767,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.tongue.draw()
             this.tonguelink.draw()
             this.body.draw()
-            this.eye1.x = (Math.cos(this.angle-.58)*this.guidedis)+this.body.x
-            this.eye1.y = (Math.sin(this.angle-.58)*this.guidedis)+this.body.y
-            this.eye2.x = (Math.cos(this.angle+.58)*this.guidedis)+this.body.x
-            this.eye2.y = (Math.sin(this.angle+.58)*this.guidedis)+this.body.y
-            this.leg1.x = (Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)+this.body.x
-            this.leg1.y = (Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)+this.body.y
-            this.leg2.x = (Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)+this.body.x
-            this.leg2.y = (Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)+this.body.y
-            this.leg1x.x = (Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)+this.body.x
-            this.leg1x.y = (Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)+this.body.y
-            this.leg2x.x = (Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)+this.body.x
-            this.leg2x.y = (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)+this.body.y
-            this.leg3.x = this.body.x-(Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)
-            this.leg3.y = this.body.y-(Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)
-            this.leg4.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)
-            this.leg4.y = this.body.y-(Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*3)
-            this.leg3x.x =  this.body.x-(Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)
-            this.leg3x.y =  this.body.y-(Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)
-            this.leg4x.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)
-            this.leg4x.y =this.body.y- (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*5)
+            this.eye1.x = (Math.cos(this.angle-.58)*this.guidedis*.5)+this.body.x
+            this.eye1.y = (Math.sin(this.angle-.58)*this.guidedis*.5)+this.body.y
+            this.eye2.x = (Math.cos(this.angle+.58)*this.guidedis*.5)+this.body.x
+            this.eye2.y = (Math.sin(this.angle+.58)*this.guidedis*.5)+this.body.y
+            this.leg1.x = (Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*2.3)+this.body.x
+            this.leg1.y = (Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*2.3)+this.body.y
+            this.leg2.x = (Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*2.3)+this.body.x
+            this.leg2.y = (Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*2.3)+this.body.y
+            this.leg1x.x = (Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*3.8)+this.body.x
+            this.leg1x.y = (Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*3.8)+this.body.y
+            this.leg2x.x = (Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*3.8)+this.body.x
+            this.leg2x.y = (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*3.8)+this.body.y
+            this.leg3.x = this.body.x-(Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*2.3)
+            this.leg3.y = this.body.y-(Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*2.3)
+            this.leg4.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*2.3)
+            this.leg4.y = this.body.y-(Math.sin(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*2.3)
+            this.leg3x.x =  this.body.x-(Math.cos(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*3.8)
+            this.leg3x.y =  this.body.y-(Math.sin(this.angle-(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*3.8)
+            this.leg4x.x =  this.body.x-(Math.cos(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*3.8)
+            this.leg4x.y =this.body.y- (Math.sin(this.angle+(Math.PI*(.9*(this.timeratio*this.timeratio))))*this.guidedis*3.8)
             if(keysPressed['d']){
                 this.angle+=.075
             }
@@ -1701,8 +1806,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 }
             }
             // this.guide.draw()
-            this.eye1.draw()
-            this.eye2.draw()
             this.leg1.draw()
             this.leg2.draw()
             this.leg1x.draw()
@@ -1733,6 +1836,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 this.body.ymom*=-2
                 this.body.move()
             }
+
+
+
+            this.foot1 = new PygmyFoot(this.leg1x, this.leg1xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.foot1 = new PygmyFoot(this.leg2x, this.leg2xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.foot1 = new PygmyFoot(this.leg3x, this.leg3xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.foot1 = new PygmyFoot(this.leg4x, this.leg4xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.eye1.draw()
+            this.eye2.draw()
         }
         eat(fly,t){
             
@@ -1846,10 +1966,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.tongue.draw()
             this.tonguelink.draw()
             this.body.draw()
-            this.eye1.x = (Math.cos(this.angle-.58)*this.guidedis)+this.body.x
-            this.eye1.y = (Math.sin(this.angle-.58)*this.guidedis)+this.body.y
-            this.eye2.x = (Math.cos(this.angle+.58)*this.guidedis)+this.body.x
-            this.eye2.y = (Math.sin(this.angle+.58)*this.guidedis)+this.body.y
+            this.eye1.x = (Math.cos(this.angle-.58)*this.guidedis*1.1)+this.body.x
+            this.eye1.y = (Math.sin(this.angle-.58)*this.guidedis*1.1)+this.body.y
+            this.eye2.x = (Math.cos(this.angle+.58)*this.guidedis*1.1)+this.body.x
+            this.eye2.y = (Math.sin(this.angle+.58)*this.guidedis*1.1)+this.body.y
             this.leg1.x = (Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.x
             this.leg1.y = (Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.y
             this.leg2.x = (Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.x
@@ -1884,9 +2004,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     this.body.ymom*=.98
                 }
             }
-            this.guide.draw()
-            this.eye1.draw()
-            this.eye2.draw()
+            // this.guide.draw()
             this.leg1.draw()
             this.leg2.draw()
             this.leg1x.draw()
@@ -1920,6 +2038,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 this.body.ymom*=-2
                 this.body.move()
             }
+
+
+            this.foot1 = new BullFoot(this.leg1x, this.leg1xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.foot1 = new BullFoot(this.leg2x, this.leg2xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.foot1 = new BullFoot(this.leg3x, this.leg3xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.foot1 = new BullFoot(this.leg4x, this.leg4xlink.angle(), .7)
+            this.foot1.draw()
+
+            this.eye1.draw()
+            this.eye2.draw()
         }
         eat(fly,t){
             
@@ -2038,10 +2172,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.tongue.draw()
             this.tonguelink.draw()
             this.body.draw()
-            this.eye1.x = (Math.cos(this.angle-.58)*this.guidedis)+this.body.x
-            this.eye1.y = (Math.sin(this.angle-.58)*this.guidedis)+this.body.y
-            this.eye2.x = (Math.cos(this.angle+.58)*this.guidedis)+this.body.x
-            this.eye2.y = (Math.sin(this.angle+.58)*this.guidedis)+this.body.y
+            this.eye1.x = (Math.cos(this.angle-.58)*this.guidedis*.8)+this.body.x
+            this.eye1.y = (Math.sin(this.angle-.58)*this.guidedis*.8)+this.body.y
+            this.eye2.x = (Math.cos(this.angle+.58)*this.guidedis*.8)+this.body.x
+            this.eye2.y = (Math.sin(this.angle+.58)*this.guidedis*.8)+this.body.y
             this.leg1.x = (Math.cos(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.x
             this.leg1.y = (Math.sin(this.angle-(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.y
             this.leg2.x = (Math.cos(this.angle+(Math.PI*(.6666*this.timeratio)))*this.guidedis*4)+this.body.x
@@ -2076,9 +2210,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     this.body.ymom*=.98
                 }
             }
-            this.guide.draw()
-            this.eye1.draw()
-            this.eye2.draw()
+            // this.guide.draw()
             this.leg1.draw()
             this.leg2.draw()
             this.leg1x.draw()
@@ -2109,6 +2241,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 this.body.ymom*=-2
                 this.body.move()
             }
+
+
+            this.foot1 = new GlideFoot(this.leg1x, this.leg1xlink.angle(), .5)
+            this.foot1.draw()
+
+            this.foot1 = new GlideFoot(this.leg2x, this.leg2xlink.angle(), .5)
+            this.foot1.draw()
+
+            this.foot1 = new GlideFoot(this.leg3x, this.leg3xlink.angle(), .5)
+            this.foot1.draw()
+
+            this.foot1 = new GlideFoot(this.leg4x, this.leg4xlink.angle(), .5)
+            this.foot1.draw()
+
+            this.eye1.draw()
+            this.eye2.draw()
         }
         eat(fly,t){
             
