@@ -1614,7 +1614,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.step = step
             for(let t = 0;t<3;t++){
                 let toe = new Circle(this.body.x+(Math.cos(this.angle)*this.body.radius*2), this.body.y+(Math.sin(this.angle)*this.body.radius*2), this.body.radius*.5, this.body.color)
-                let link = new LineOP(toe, this.body, this.body.color+"44", toe.radius*.5)
+                let link = new LineOP(toe, this.body, this.body.color+"BB", toe.radius*.5)
                 this.angle+=this.step
                 this.toes.push(toe)
                 this.toes.push(link)
@@ -1637,7 +1637,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.step = step
             for(let t = 0;t<3;t++){
                 let toe = new Circle(this.body.x+(Math.cos(this.angle)*this.body.radius*1.8), this.body.y+(Math.sin(this.angle)*this.body.radius*1.8), this.body.radius*.3, this.body.color)
-                let link = new LineOP(toe, this.body, this.body.color+"44", toe.radius*.9)
+                let link = new LineOP(toe, this.body, this.body.color+"BB", toe.radius*.9)
                 this.angle+=this.step
                 this.toes.push(toe)
                 this.toes.push(link)
@@ -1660,7 +1660,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.step = step
             for(let t = 0;t<3;t++){
                 let toe = new Circle(this.body.x+(Math.cos(this.angle)*this.body.radius*1.8), this.body.y+(Math.sin(this.angle)*this.body.radius*1.8), this.body.radius*.8, this.body.color)
-                let link = new LineOP(toe, this.body, this.body.color+"44", toe.radius*.9)
+                let link = new LineOP(toe, this.body, this.body.color+"BB", toe.radius*.9)
                 this.angle+=this.step
                 this.toes.push(toe)
                 this.toes.push(link)
@@ -1682,7 +1682,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 this.step = step
                 for(let t = 0;t<3;t++){
                     let toe = new Circle(this.body.x+(Math.cos(this.angle)*this.body.radius*2.1), this.body.y+(Math.sin(this.angle)*this.body.radius*2.1), this.body.radius*.2, this.body.color)
-                    let link = new LineOP(toe, this.body, this.body.color+"44", toe.radius*.9)
+                    let link = new LineOP(toe, this.body, this.body.color+"BB", toe.radius*.9)
                     this.angle+=this.step
                     this.toes.push(toe)
                     this.toes.push(link)
@@ -1822,7 +1822,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.leg4link.draw()
             this.leg3xlink.draw()
             this.leg4xlink.draw()
-            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*4, this.tongue.radius*1.5)
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+3)*5, this.tongue.radius*2.5)
             this.tonguelink.width = this.tongue.radius
             for(let t = 0;t<flies.length;t++){
                 if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
@@ -2021,7 +2021,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.leg4link.draw()
             this.leg3xlink.draw()
             this.leg4xlink.draw()
-            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius)
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius*1.1)
             this.tonguelink.width = this.tongue.radius
             for(let t = 0;t<flies.length;t++){
                 if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
@@ -2227,7 +2227,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.leg4link.draw()
             this.leg3xlink.draw()
             this.leg4xlink.draw()
-            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius)
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+2)*3.5, this.tongue.radius*1.1)
             this.tonguelink.width = this.tongue.radius
             for(let t = 0;t<flies.length;t++){
                 if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
