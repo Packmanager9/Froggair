@@ -1222,16 +1222,43 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     
                     tadpoles[0] = new BullFrog()
                                         
-                        for(let t = 0;t<240000;t++){
+                        for(let t = 0;t<312000;t++){
                             flies.push(new Fly())
+                            
+                        if(Math.random()<.1){
+                            flies[t].body.y-=16000
+                            flies[t].body.radius*=3
+                        }
+                        if(Math.random()<.1){
+                            flies[t].body.y-=16000
+                            flies[t].body.radius*=3
+                        }
+                        if(Math.random()<.1){
+                            flies[t].body.y-=16000
+                            flies[t].body.radius*=1.5
+                        }
                         }
                 }
                 if(buttonzenb.isPointInside(TIP_engine)){
                     timed = -1
                     
-                    tadpoles[0] = new BullFrog()                       
-                    for(let t = 0;t<240000;t++){
+                    tadpoles[0] = new BullFrog()    
+                       
+                    for(let t = 0;t<312000;t++){
                         flies.push(new Fly())
+                        
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=1.5
+                    }
                     }
                 }
 
@@ -1240,17 +1267,45 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     time = new Date()
                     moment = time.getTime()
                     
-                    tadpoles[0] = new GlideFrog()                       
-                    for(let t = 0;t<240000;t++){
+                    tadpoles[0] = new GlideFrog()   
+                       
+                    for(let t = 0;t<312000;t++){
                         flies.push(new Fly())
+                        
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=1.5
+                    }
                     }
                 }
                 if(buttonzeng.isPointInside(TIP_engine)){
                     timed = -1
                     
-                    tadpoles[0] = new GlideFrog()                       
-                    for(let t = 0;t<240000;t++){
+                    tadpoles[0] = new GlideFrog()   
+                       
+                    for(let t = 0;t<312000;t++){
                         flies.push(new Fly())
+                        
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=1.5
+                    }
                     }
                 }
 
@@ -1260,16 +1315,44 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     time = new Date()
                     moment = time.getTime()
                     
-                    tadpoles[0] = new Frog()                       
-                    for(let t = 0;t<240000;t++){
+                    tadpoles[0] = new Frog()           
+                       
+                    for(let t = 0;t<312000;t++){
                         flies.push(new Fly())
+                        
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=1.5
+                    }
                     }
                 }
                 if(buttonzenf.isPointInside(TIP_engine)){
                     timed = -1
-                    tadpoles[0] = new Frog()                       
-                    for(let t = 0;t<240000;t++){
+                    tadpoles[0] = new Frog()         
+                       
+                    for(let t = 0;t<312000;t++){
                         flies.push(new Fly())
+                        
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=1.5
+                    }
                     }
                 }
 
@@ -1278,16 +1361,44 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     time = new Date()
                     moment = time.getTime()
                     
-                    tadpoles[0] = new PygmyFrog()                       
-                    for(let t = 0;t<240000;t++){
+                    tadpoles[0] = new PygmyFrog()    
+                       
+                    for(let t = 0;t<312000;t++){
                         flies.push(new Fly())
+                        
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=1.5
+                    }
                     }
                 }
                 if(buttonzenp.isPointInside(TIP_engine)){
                     timed = -1
-                    tadpoles[0] = new PygmyFrog()                       
-                    for(let t = 0;t<240000;t++){
+                    tadpoles[0] = new PygmyFrog()   
+                       
+                    for(let t = 0;t<312000;t++){
                         flies.push(new Fly())
+                        
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=3
+                    }
+                    if(Math.random()<.1){
+                        flies[t].body.y-=16000
+                        flies[t].body.radius*=1.5
+                    }
                     }
                 }
             }
@@ -1533,7 +1644,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.leg4link.draw()
             this.leg3xlink.draw()
             this.leg4xlink.draw()
-            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius)
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius*1.7)
             this.tonguelink.width = this.tongue.radius
             for(let t = 0;t<flies.length;t++){
                 if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
@@ -1544,7 +1655,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
             }
             if(floor.isPointInside(this.body)){
-                this.body.ymom*=-2
+                this.body.ymom*=-1.5
                 this.body.move()
             }
 
@@ -1822,7 +1933,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.leg4link.draw()
             this.leg3xlink.draw()
             this.leg4xlink.draw()
-            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+3)*5, this.tongue.radius*2.5)
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+3)*5, this.tongue.radius*2.7)
             this.tonguelink.width = this.tongue.radius
             for(let t = 0;t<flies.length;t++){
                 if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
@@ -1833,7 +1944,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
             }
             if(floor.isPointInside(this.body)){
-                this.body.ymom*=-2
+                this.body.ymom*=-1.5
                 this.body.move()
             }
 
@@ -2021,7 +2132,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.leg4link.draw()
             this.leg3xlink.draw()
             this.leg4xlink.draw()
-            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius*1.1)
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+1)*3, this.tongue.radius*1.41)
             this.tonguelink.width = this.tongue.radius
             for(let t = 0;t<flies.length;t++){
                 if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
@@ -2035,7 +2146,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
             }
             if(floor.isPointInside(this.body)){
-                this.body.ymom*=-2
+                this.body.ymom*=-1.5
                 this.body.move()
             }
 
@@ -2227,7 +2338,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.leg4link.draw()
             this.leg3xlink.draw()
             this.leg4xlink.draw()
-            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+2)*3.5, this.tongue.radius*1.1)
+            this.tonguebeam = castBetween(this.body, this.tongue, (this.body.radius+2)*3.5, this.tongue.radius*1.41)
             this.tonguelink.width = this.tongue.radius
             for(let t = 0;t<flies.length;t++){
                 if(flies[t].link.squareDistance() < (700*700)/tadpoles[0].scale){
@@ -2238,7 +2349,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
             }
             if(floor.isPointInside(this.body)){
-                this.body.ymom*=-2
+                this.body.ymom*=-1.5
                 this.body.move()
             }
 
